@@ -1,3 +1,15 @@
+mui.init({
+	gestureConfig:{
+		tap: true, //默认为true
+		doubletap: true, //默认为false
+		longtap: true, //默认为false
+		swipe: true, //默认为true
+		drag: true, //默认为true
+		hold:false,//默认为false，不监听
+		release:false//默认为false，不监听
+	}
+});
+
 var btnActive = mui(".btnActive")[0];
 var btnUnable = mui(".btnUnable")[0];
 
@@ -9,17 +21,18 @@ var audio2 = mui(".audio2")[0];
 var audio3 = mui(".audio3")[0];
 
 var btn = mui(".btn")[0]
-var newImg = mui(".newImg")[0];
+var newImg = mui(".newImg")[0]; 
 var changeImg = mui(".changeImg")[0];
 var maps = mui(".map")[0]; 
 var big = mui(".big")[0];
 var flip = mui(".flip")[0];
 var imgBk = mui(".imgBk")[0];
 var closedbtn = mui(".closed")[0]; 
+var inputFoot = mui(".inputFoot")[0];
+var inputSearchBtn = mui(".inputSearch")[0]
 var listenContorller = {};
 var imgContorller = {};
 var searchWord;
-var editor=false;
 
 btnActive.addEventListener("tap",function(){
 	btnUnable.style.display = "block";
@@ -27,6 +40,10 @@ btnActive.addEventListener("tap",function(){
 	bluePerson.style.display = "block";
 	audio1.play();
 	setTimeout(listenContorller.listenWord,4000)
+});
+
+inputSearchBtn.addEventListener("change",function(){
+	imgContorller.inputList(imgContorller.search(this.value))
 })
 
 /*语音听写状态*/
@@ -57,7 +74,14 @@ listenContorller.listenWord2 = function(){
 			listenContorller.listenOver();
 		}
 	}, function ( e ) {
-		alert("语音输入错误弹出二种方案")
+		audio1.play();
+		setTimeout(function(){
+			bluePerson1.style.display = "none";
+			btnUnable.style.display = "none";
+			btnActive.style.display = "block";
+			listenContorller.inputImg();
+		},2500)
+		
 	} );
 	
 }
@@ -81,23 +105,44 @@ listenContorller.listenErr = function(){
 
 /*通过识别搜索*/
 listenContorller.searchImg = function(){
-	alert("语音搜索贴图："+searchWord);
-	maps.src = "../images/newImg/v2_c0_fruit_g0_t0_tomato_xihongshi.png";
-	changeImg.style.display = "block";
-	editor=true;
-	imgContorller.init();
+	var bol=false;
+	var item = imgContorller.search(searchWord.substring(0,searchWord.length-1));
+	if(item.length==1){
+		maps.src = "../images/maps/"+mapsUrl[item[0]];
+		bol = true;
+		changeImg.style.display = "block";
+		imgContorller.show();
+		imgContorller.init();
+	}else if(item.length==0){
+		mui.toast('Sorry, no tag was found',{ duration:'short', type:'div' })
+		btnUnable.style.display = "none";
+		btnActive.style.display = "block";
+	}else{
+		imgContorller.inputList(item)
+	}
+}
+
+listenContorller.inputImg = function(){
+	inputFoot.style.display = "block";
 }
 
 var imgAccesst = {};
-var biandaAccesst = {};
+var biandaAccesst = {}; 
 var xuanzhuanAccesst = {};
 
 
 imgContorller.init = function(){
 	newImg.addEventListener("tap",imgContorller.clear);
+	imgBk.addEventListener("tap",function(e){
+		e.stopPropagation();
+		mui.toast('对应单词读音',{ duration:'short', type:'div' })
+	})
 	imgBk.addEventListener("dragstart",function(e){
 		e.stopPropagation();
-		alert("对应单词");
+	})
+	imgBk.addEventListener("longtap",function(e){
+		e.stopPropagation();
+		imgContorller.show();
 	})
 	changeImg.addEventListener("dragstart",function(estart){
 		estart.stopPropagation();
@@ -147,15 +192,24 @@ imgContorller.clear = function(e){
 	btnUnable.style.display = "none";
 	btnActive.style.display = "block";
 }
+imgContorller.show = function(){
+	big.style.display = "block";
+	flip.style.display = "block";
+	closedbtn.style.display = "block";
+	imgBk.style.display = "none";
+	btnUnable.style.display = "block";
+	btnActive.style.display = "block";
+}
 imgContorller.closePage = function(){
 	changeImg.style.display = "none";
+	listenContorller.inputImg();
 }
 imgContorller.flipPage = function(eing){ 
 	var moveX = eing.detail.touches[0].screenX-biandaAccesst.statrX;
 	var moveY = eing.detail.touches[0].screenY-biandaAccesst.statrY;
 	changeImg.style.transform ='rotate('+Math.atan2(moveY,moveX) * 180 / Math.PI+'deg)' ;
 }
-imgContorller.bigPage = function(eing){
+imgContorller.bigPage = function(eing){ 
 	var moveX = eing.detail.touches[0].screenX-biandaAccesst.statrX;
 	var moveY = eing.detail.touches[0].screenY-biandaAccesst.statrY;
 	moveX>0?moveX1 = moveX:moveX1 = -moveX
@@ -169,4 +223,42 @@ imgContorller.movePage = function(eing){
 	var moveY = eing.detail.touches[0].screenY-imgAccesst.statrY;
 	changeImg.style.left = imgAccesst.domx+moveX+"px";
 	changeImg.style.top = imgAccesst.domy+moveY+"px";
+}
+
+imgContorller.inputImg = function(){
+	var inputimg = mui(".imgList ul li");
+	var self = this;
+	this.bindEvent = function(i){
+		inputimg[i].addEventListener("tap",function(){
+			var src = this.getElementsByTagName("img")[0].src;
+			var num = src.lastIndexOf("/");
+			maps.src = "../images/maps/"+src.substring(num+1,src.length);
+			inputFoot.style.display = "none";
+			changeImg.style.display = "block";
+			imgContorller.show();
+			imgContorller.init();
+		})
+	}
+	for (var i=0;i<inputimg.length;i++) {
+		self.bindEvent(i);
+	}
+}
+imgContorller.inputList = function(list){
+	var index=""
+	for(var i=0;i<list.length;i++){
+		index+='<li><img src="../images/maps/'+mapsUrl[list[i]]+'"/></li>'
+	}
+	mui(".imgList ul")[0].innerHTML = index;
+	imgContorller.inputImg();
+	inputFoot.style.display = "block";
+	changeImg.style.display = "none";
+}
+imgContorller.search = function(text){
+	var item=[];
+	for (var i=0;i<mapsCn.length;i++) {
+		if(mapsCn[i].indexOf(text) != -1){
+			item.push(i)
+		}
+	}
+	return item;
 }
