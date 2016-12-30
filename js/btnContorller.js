@@ -28,17 +28,63 @@ var big = mui(".big")[0];
 var flip = mui(".flip")[0];
 var imgBk = mui(".imgBk")[0];
 var closedbtn = mui(".closed")[0]; 
+var rotating = mui(".rotating")[0];
 var inputFoot = mui(".inputFoot")[0];
 var inputSearchBtn = mui(".inputSearch")[0]
+var btnImgBk = mui(".btnImgBk")[0];
 var listenContorller = {};
 var imgContorller = {};
 var searchWord;
+var imgInfo={
+	rotateY:0
+};
+
+setTimeout(function(){
+	btnImgBk.style.display = "none"
+},3000)
+
+var mp3Play = {}
+mp3Play.startPlay1 = function() {
+	if ( plus.audio == undefined ) {
+		alert( "Device not ready!" );
+	}
+	p = plus.audio.createPlayer( "../mp3/newMp3/01_giant_voice_01_en.mp3" );
+	p.play( function () {
+		console.log( "Audio play success!" ); 
+	}, function ( e ) {
+		alert( "Audio play error: " + e.message ); 
+	} ); 
+}
+
+mp3Play.startPlay2 = function() {
+	if ( plus.audio == undefined ) {
+		alert( "Device not ready!" );
+	}
+	p = plus.audio.createPlayer( "../mp3/newMp3/05_giant_voice_03_en.mp3" );
+	p.play( function () {
+		console.log( "Audio play success!" ); 
+	}, function ( e ) {
+		alert( "Audio play error: " + e.message ); 
+	} ); 
+}
+
+mp3Play.startPlay3 = function() {
+	if ( plus.audio == undefined ) {
+		alert( "Device not ready!" );
+	}
+	p = plus.audio.createPlayer( "../mp3/newMp3/03_giant_voice_02_en.mp3" );
+	p.play( function () {
+		console.log( "Audio play success!" ); 
+	}, function ( e ) {
+		alert( "Audio play error: " + e.message ); 
+	} ); 
+}
 
 btnActive.addEventListener("tap",function(){
 	btnUnable.style.display = "block";
 	btnActive.style.display = "none";
 	bluePerson.style.display = "block";
-	audio1.play();
+	mp3Play.startPlay1();
 	setTimeout(listenContorller.listenWord,4000)
 });
 
@@ -53,13 +99,13 @@ listenContorller.listenWord = function(){
 	text = "";
 	plus.speech.startRecognize( options, function ( s ) {
 		text+=s;
-		if(s == "。"){
-			searchWord = text;
-			listenContorller.listenOver();
-		}
+		text.replace(/。/g,'');
+		searchWord = text;
+		listenContorller.listenOver();
 	}, function ( e ) {
 		listenContorller.listenErr();
 	} );
+	
 	
 }
 /*语音听写状态2*/
@@ -69,12 +115,11 @@ listenContorller.listenWord2 = function(){
 	text = "";
 	plus.speech.startRecognize( options, function ( s ) {
 		text+=s;
-		if(s == "。"){
-			searchWord = text;
-			listenContorller.listenOver();
-		}
+		text.replace(/。/g,'');
+		searchWord = text;
+		listenContorller.listenOver();
 	}, function ( e ) {
-		audio1.play();
+		mp3Play.startPlay1();
 		setTimeout(function(){
 			bluePerson1.style.display = "none";
 			btnUnable.style.display = "none";
@@ -87,9 +132,10 @@ listenContorller.listenWord2 = function(){
 }
 /*语音识别完毕*/
 listenContorller.listenOver = function(){
-	audio2.play();
+	mp3Play.startPlay2();
 	setTimeout(function(){
 		bluePerson.style.display = "none";
+		bluePerson1.style.display = "none";
 		listenContorller.searchImg();
 	},2500)
 }
@@ -97,7 +143,7 @@ listenContorller.listenOver = function(){
 listenContorller.listenErr = function(){
 	bluePerson.style.display = "none";
 	bluePerson1.style.display = "block";
-	audio3.play();
+	mp3Play.startPlay3();
 	setTimeout(function(){
 		listenContorller.listenWord2();
 	},3500)
@@ -181,6 +227,11 @@ imgContorller.init = function(){
 	closedbtn.addEventListener("tap",function(e){
 		imgContorller.closePage();
 	})
+	rotating.addEventListener("tap",function(e){
+		e.stopPropagation();
+		imgContorller.rotatingPage();
+	})
+	
 }
 
 imgContorller.clear = function(e){
@@ -188,6 +239,7 @@ imgContorller.clear = function(e){
 	big.style.display = "none";
 	flip.style.display = "none";
 	closedbtn.style.display = "none";
+	rotating.style.display = "none";
 	imgBk.style.display = "block";
 	btnUnable.style.display = "none";
 	btnActive.style.display = "block";
@@ -196,6 +248,7 @@ imgContorller.show = function(){
 	big.style.display = "block";
 	flip.style.display = "block";
 	closedbtn.style.display = "block";
+	rotating.style.display = "block";
 	imgBk.style.display = "none";
 	btnUnable.style.display = "block";
 	btnActive.style.display = "block";
@@ -223,6 +276,10 @@ imgContorller.movePage = function(eing){
 	var moveY = eing.detail.touches[0].screenY-imgAccesst.statrY;
 	changeImg.style.left = imgAccesst.domx+moveX+"px";
 	changeImg.style.top = imgAccesst.domy+moveY+"px";
+}
+imgContorller.rotatingPage = function(eing){
+	var num = imgInfo.rotateY+=180
+	changeImg.style.transform ='rotateY('+num+'deg)';
 }
 
 imgContorller.inputImg = function(){
