@@ -32,6 +32,8 @@ var rotating = mui(".rotating")[0];
 var inputFoot = mui(".inputFoot")[0];
 var inputSearchBtn = mui(".inputSearch")[0]
 var btnImgBk = mui(".btnImgBk")[0];
+var add = mui(".add")[0];
+var imgList = mui(".imgList")[0]
 var listenContorller = {};
 var imgContorller = {};
 var inputContorller={};
@@ -89,8 +91,16 @@ btnActive.addEventListener("tap",function(){
 	setTimeout(listenContorller.listenWord,4000)
 });
 
-inputSearchBtn.addEventListener("change",function(){
-	imgContorller.inputList(inputContorller.search(this.value))
+add.addEventListener("tap",function(){
+	if(inputSearchBtn.value == ""){
+		mui.toast('搜索内容不能为空',{ duration:'short', type:'div' })
+		return
+	}
+	imgList.style.display = "block";
+	inputContorller.inputList(inputContorller.search(inputSearchBtn.value))
+})
+inputSearchBtn.addEventListener("focus",function(){
+	imgList.style.display = "none";
 })
 
 /*语音听写状态*/
@@ -100,8 +110,7 @@ listenContorller.listenWord = function(){
 	text = "";
 	plus.speech.startRecognize( options, function ( s ) {
 		text+=s;
-		text.replace(/。/g,'');
-		searchWord = text;
+		searchWord = text.replace(/。/g,'');
 		listenContorller.listenOver();
 	}, function ( e ) {
 		listenContorller.listenErr();
@@ -114,8 +123,7 @@ listenContorller.listenWord2 = function(){
 	text = "";
 	plus.speech.startRecognize( options, function ( s ) {
 		text+=s;
-		text.replace(/。/g,'');
-		searchWord = text;
+		searchWord = text.replace(/。/g,'');
 		listenContorller.listenOver();
 	}, function ( e ) {
 		mp3Play.startPlay1();
@@ -236,23 +244,25 @@ imgContorller.init = function(){
 /*图片清除*/
 imgContorller.clear = function(e){
 	e.stopPropagation();
+	btnUnable.style.display = "none";
+	btnActive.style.display = "block";
 	big.style.display = "none";
 	flip.style.display = "none";
 	closedbtn.style.display = "none";
 	rotating.style.display = "none";
 	imgBk.style.display = "block";
-	btnUnable.style.display = "none";
-	btnActive.style.display = "block";
+
 }
 /*图片显示*/
 imgContorller.show = function(){
+	btnUnable.style.display = "block";
+	btnActive.style.display = "none";
 	big.style.display = "block";
 	flip.style.display = "block";
 	closedbtn.style.display = "block";
 	rotating.style.display = "block";
 	imgBk.style.display = "none";
-	btnUnable.style.display = "block";
-	btnActive.style.display = "block";
+
 }
 imgContorller.closePage = function(){
 	changeImg.style.display = "none";
@@ -261,7 +271,8 @@ imgContorller.closePage = function(){
 imgContorller.flipPage = function(eing){ 
 	var moveX = eing.detail.touches[0].screenX-biandaAccesst.statrX;
 	var moveY = eing.detail.touches[0].screenY-biandaAccesst.statrY;
-	changeImg.style.transform ='rotate('+Math.atan2(moveY,moveX) * 180 / Math.PI+'deg)' ;
+//	changeImg.style.transform ='rotate('+Math.atan2(moveY,moveX) * 180 / Math.PI+'deg)' ;
+	changeImg.style.webkitTransform='rotate('+Math.atan2(moveY,moveX) * 180 / Math.PI+'deg)' ;
 }
 imgContorller.bigPage = function(eing){ 
 	var moveX = eing.detail.touches[0].screenX-biandaAccesst.statrX;
@@ -279,8 +290,8 @@ imgContorller.movePage = function(eing){
 	changeImg.style.top = imgAccesst.domy+moveY+"px";
 }
 imgContorller.rotatingPage = function(eing){
-	var num = imgInfo.rotateY+=180
-	changeImg.style.transform ='rotateY('+num+'deg)';
+	imgInfo.rotateY = imgInfo.rotateY+180;
+	changeImg.style.webkitTransform ='rotateY('+imgInfo.rotateY+'deg)';
 }
 /*input搜索列表绑定事件*/
 imgContorller.inputImg = function(){
