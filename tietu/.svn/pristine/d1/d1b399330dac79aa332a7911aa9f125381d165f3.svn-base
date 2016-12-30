@@ -1,0 +1,893 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "H565A4C44",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "单词",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.0.7",/*应用版本名称*/
+		"code": "100"
+	},
+	"description": "单词APP",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "page/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": ""
+	},
+	"permissions": {
+		"Accelerometer": {},
+		"Audio": {},
+
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Camera": {},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		
+		"Device": {},
+		"Downloader": {},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {},
+		"Gallery": {},
+		"Geolocation": {},
+		"Invocation": {},
+		"Orientation": {},
+		"Proximity": {},
+		"Storage": {},
+
+		"Uploader": {},
+		"Runtime": {},
+		"XMLHttpRequest": {},
+		"Zip": {},
+
+		"Speech": {},
+		"Push": {},
+		
+		"Statistic": {},
+		"Webview": {},
+		"NativeUI": {},
+		"Navigator": {},
+		"Barcode": {},
+		"NativeObj": {},"Share":{},"Maps":{},"Contacts":{},"Messaging":{}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": true,"delay":"2000"
+		},
+		"ramcachemode": "enable",
+		"popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+		"runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"push": {
+					"igexin": {
+						"appid": "WSx4Z58krg97fxi1DtAib6",
+						"appkey": "bsIpBVe3LoARd7dGRdCaU4",
+						"appsecret": "nEeG3MQT679XVPXLeW1SB"
+					}
+				},
+				"share": {"qq":{"appid":"1104948582","description":"QQ分享"},"weixin":{"appid":"wx30b00ac9552225d0","appsecret":"426ce708eebfef19bad7a23ee0c8df76","description":"可选，微信分享"}
+					
+					
+				},
+				"statics": {
+					"umeng": {
+						"appkey_ios": "5636db0b67e58ef710001018",
+						"channelid_ios": "ios",
+						"appkey_android": "5636dab0e0f55af9120020ec",
+						"channelid_android": "android"
+					}
+				}
+			},
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"urltypes": [
+					{
+						"urlidentifier": "com.tupian001.xiaoxi",
+						"urlschemes": [
+							"xiaoxi"
+						]
+					}
+				],
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				"minSdkVersion": 14,
+				"schemes": [
+					"xiaoxi"
+				],
+				"permissions": ["<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.GET_TASKS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+			},
+			"orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png", /*iPhone4程序图标，分辨率：114x114*/
+						"retina7": "unpackage/res/icons/120x120.png", /*iPhone4S/5/6程序图标，分辨率：120x120*/
+						"retina8": "unpackage/res/icons/180x180.png", /*iPhone6 Plus程序图标，分辨率：180x180*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png", /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png", /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+						"settings-retina8": "unpackage/res/icons/87x87.png"
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png"
+					}
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						 /*iPhone3启动图片选，分辨率：320x480*/
+						/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+						/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+						/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+						
+					},
+					"ipad": {
+						 /*iPad竖屏启动图片，分辨率：768x1004*/
+						/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						 /*iPad横屏启动图片，分辨率：1024x748*/
+						 /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						 /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						 /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						
+					}
+				},
+				"android": {"hdpi":"unpackage/res/images/启动页03_480x762_版2_lite.png","ldpi":"unpackage/res/images/启动页02_320x442_版2_lite.png","mdpi":"unpackage/res/images/启动页01_240x282_版2_lite.png","xhdpi":"unpackage/res/images/启动页04_720x1242_版2_lite.png","xxhdpi":"unpackage/res/images/启动页05_1080x1882_版2_lite.png"
+					 /*普通屏启动图片，分辨率：240x282*/
+					 /*大屏启动图片，分辨率：320x442*/
+					 /*高分屏启动图片，分辨率：480x762*/
+					 /*720P高分屏启动图片，分辨率：720x1242*/
+					
+				}
+			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"page/activity_index.html",
+					"page/around.html",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"page/more.html",
+					"page/index.html",
+					"page/my.html",
+					"page/add.html",
+					"js/template.js",
+					"page/notice.html",
+					"css/style.css",
+					"js/index.js"
+				],
+				"refer": [
+					"page/template.html",
+					"page/guide.html",
+					"page/login.html",
+					"page/blog-add.html",
+					"page/help.html",
+					"page/avatar-add.html",
+					"page/blog-index.html",
+					"page/avatar-show.html",
+					"page/blog-my.html"
+				],
+				"priority": 0
+			},
+			"page/activity_index.html": {
+				"resources": [
+					"css/index.css",
+					"js/template.js",
+					"js/mui.min.js",
+					"js/app.js"
+				],
+				"refer": [
+					"page/template.html"
+				],
+				"priority": 0
+			},
+			"page/guide.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"page/template.html"
+				],
+				"priority": 0
+			},
+			"page/index.html": {
+				"resources": [
+					"css/style.css",
+					"images/jinbi.jpg",
+					"images/answer.png",
+					"source/01the.jpg",
+					"source/02be.jpg",
+					"source/02be.mp3",
+					"source/03of.jpg",
+					"mp3/wrong.mp3",
+					"mp3/right.mp3",
+					"source/01the.mp3",
+					"source/03of.mp3",
+					"source/04and.mp3",
+					"source/05a.mp3",
+					"js/app.js",
+					"source/04and.jpg",
+					"source/08he.jpg",
+					"source/07in.jpg",
+					"source/06to.jpg",
+					"source/05a.jpg",
+					"source/09have.jpg",
+					"source/10it.jpg",
+					"source/14I.jpg",
+					"source/12for.jpg",
+					"source/11that.jpg",
+					"source/13they.jpg",
+					"source/18on.jpg",
+					"source/15with.jpg",
+					"source/17not.jpg",
+					"source/16as.jpg",
+					"source/21by.jpg",
+					"source/20at.jpg",
+					"source/19she.jpg",
+					"source/22this.jpg",
+					"source/25do.jpg",
+					"source/24you.jpg",
+					"source/23we.jpg",
+					"source/data.json",
+					"source/06to.mp3",
+					"source/07in.mp3",
+					"source/08he.mp3",
+					"source/09have.mp3",
+					"source/10it.mp3",
+					"source/11that.mp3",
+					"source/12for.mp3",
+					"source/13they.mp3",
+					"source/14I.mp3",
+					"source/15with.mp3",
+					"source/16as.mp3",
+					"source/17not.mp3",
+					"source/18on.mp3",
+					"source/19she.mp3",
+					"source/20at.mp3",
+					"source/21by.mp3",
+					"source/22this.mp3",
+					"source/23we.mp3",
+					"source/24you.mp3",
+					"source/25do.mp3",
+					null,
+					"css/mui.min.css",
+					"images/right.jpg",
+					"images/right.png",
+					"images/jinbi.png",
+					"images/loading.gif",
+					"images/x.png",
+					"images/wrong.png",
+					"/images/loading.gif"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/around.html": {
+				"resources": [
+					"js/app.js",
+					"images/i_b.png",
+					"images/i_d.png",
+					"fonts/mui.ttf",
+					"images/i_c.png",
+					"images/i_a.png",
+					"images/i_e.png"
+				],
+				"refer": [
+					"page/template.html"
+				],
+				"priority": 0
+			},
+			"page/template.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"page/login.html",
+					"css/style.css",
+					"js/a.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more.html": {
+				"resources": [
+					"images/w-f.png",
+					"images/w-b.png",
+					"images/w-d.png",
+					"js/mui.min.js",
+					"images/w-g.png",
+					"images/w-c.png",
+					"images/w-m.png",
+					"js/app.js",
+					"images/mp.png"
+				],
+				"refer": [
+					"page/template.html"
+				],
+				"priority": 0
+			},
+			"page/my.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"images/avatar.jpg",
+					"js/template.js",
+					"css/style.css",
+					"images/loading.gif",
+					"js/lrz.mobile.min.js",
+					"images/sex1.png",
+					"js/appupload.js",
+					"images/sex0.png",
+					"fonts/mui.ttf",
+					"page/my.html",
+					"js/my.js",
+					"js/a.js"
+				],
+				"refer": [
+					"page/template.html",
+					"page/setting.html",
+					"page/userinfo.html",
+					"page/show.html",
+					"page/login.html",
+					"page/blog-my.html",
+					"page/image-my.html",
+					"page/avatar-my.html",
+					"page/avatar-show.html",
+					"page/blog-add.html",
+					"page/none.html"
+				],
+				"priority": 0
+			},
+			"page/add.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"images/uploadbg.png",
+					"js/lrz.mobile.min.js",
+					"js/appupload.js",
+					"js/template.js"
+				],
+				"refer": [
+					"page/template.html",
+					"page/login.html"
+				],
+				"priority": 0
+			},
+			"page/login.html": {
+				"resources": [
+					"images/logo.png",
+					"fonts/mui.ttf",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"page/template.html",
+					"css/style.css",
+					"js/login.js",
+					"js/a.js"
+				],
+				"refer": [
+					"page/register.html",
+					"page/help.html",
+					"page/none.html"
+				],
+				"priority": 0
+			},
+			"page/setting.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/setting.js",
+					"page/template.html",
+					"page/none.html",
+					"css/style.css",
+					"js/a.js"
+				],
+				"refer": [
+					"page/userinfo.html",
+					"page/help.html"
+				],
+				"priority": 0
+			},
+			"page/show.html": {
+				"resources": [
+					"images/good.png",
+					"images/loading.gif",
+					"images/good1.png",
+					"css/style.css",
+					"js/template.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"page/show.html",
+					"js/md5.js"
+				],
+				"refer": [
+					"page/login.html",
+					"page/template.html"
+				],
+				"priority": 0
+			},
+			"page/userinfo.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.dtpicker.css",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css",
+					"js/mui.dtpicker.js",
+					"js/lrz.mobile.min.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/template.js",
+					"js/appupload.js",
+					"page/template.html",
+					"js/userinfo.js",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"page/none.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/notice.html": {
+				"resources": [
+					"js/lrz.mobile.min.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/template.js",
+					"js/appupload.js",
+					"images/avatar.jpg",
+					"images/loading.gif",
+					"js/notice-index.js",
+					"js/a.js"
+				],
+				"refer": [
+					"page/template.html",
+					"page/show.html",
+					"page/login.html",
+					"page/blog-my.html",
+					"page/blog-show.html",
+					"page/image-show.html",
+					"page/none.html"
+				],
+				"priority": 0
+			},
+			"page/register.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.dtpicker.css",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css",
+					"js/mui.dtpicker.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"page/template.html",
+					"js/register.js",
+					"images/loading.gif",
+					"fonts/mui.ttf",
+					"js/a.js",
+					"page/none.html"
+				],
+				"refer": [
+					"page/help.html",
+					"page/agreement.html"
+				],
+				"priority": 0
+			},
+			"page/help.html": {
+				"resources": [
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"page/template.html",
+					"fonts/mui.ttf",
+					"js/a.js",
+					"css/style.css",
+					"js/help.js"
+				],
+				"refer": [
+					"page/none.html"
+				],
+				"priority": 0
+			},
+			"page/agreement.html": {
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/a.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/blog-add.html": {
+				"resources": [
+					"images/uploadbg.png",
+					"js/appupload.js",
+					"js/template.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/blog-add.js",
+					"fonts/mui.ttf",
+					"js/a.js"
+				],
+				"refer": [
+					"page/template.html",
+					"page/blog-my.html",
+					"page/blog-show.html",
+					"page/none.html"
+				],
+				"priority": 0
+			},
+			"page/blog-my.html": {
+				"resources": [
+					"images/sex1.png",
+					"css/style.css",
+					"js/template.js",
+					"js/appupload.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/taffy.js",
+					"page/none.html",
+					"fonts/mui.ttf",
+					"js/blog-my.js",
+					"images/sex0.png",
+					"js/a.js",
+					"images/loading.gif",
+					"images/sheet_apple_64.png",
+					"css/emoji.css"
+				],
+				"refer": [
+					"page/template.html",
+					"page/blog-show.html"
+				],
+				"priority": 0
+			},
+			"page/image-my.html": {
+				"resources": [
+					"css/style.css",
+					"js/template.js",
+					"js/appupload.js",
+					"images/sex1.png",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"page/none.html",
+					"js/image-my.js",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"page/template.html",
+					"page/image-show.html"
+				],
+				"priority": 0
+			},
+			"page/avatar-add.html": {
+				"resources": [
+					"images/uploadbg.png",
+					"js/template.js",
+					"js/appupload.js"
+				],
+				"refer": [
+					"page/template.html",
+					"page/avatar-my.html"
+				],
+				"priority": 0
+			},
+			"page/avatar-my.html": {
+				"resources": [
+					"js/template.js",
+					"js/appupload.js"
+				],
+				"refer": [
+					"page/template.html"
+				],
+				"priority": 0
+			},
+			"page/blog-show.html": {
+				"resources": [
+					"images/good.png",
+					"images/good1.png",
+					"js/md5.js",
+					"js/template.js",
+					"images/sex0.png",
+					"images/loading.gif",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/blog-show.js",
+					"page/template.html",
+					"fonts/mui.ttf",
+					"images/sex1.png",
+					"js/a.js",
+					"images/sheet_apple_64.png",
+					"css/emoji.css",
+					"page/none.html"
+				],
+				"refer": [
+					"page/login.html"
+				],
+				"priority": 0
+			},
+			"page/avatar-show.html": {
+				"resources": [
+					"images/good1.png",
+					"js/template.js",
+					"js/md5.js",
+					"images/good.png",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/taffy.js",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/blog-index.html": {
+				"resources": [
+					"images/sex0.png",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/template.js",
+					"images/sex1.png",
+					"images/loading.gif",
+					"js/blog-index.js",
+					"js/taffy.js",
+					"page/blog-index.html",
+					"fonts/mui.ttf",
+					"images/1.jpg",
+					"js/a.js",
+					"page/image-index.html",
+					"css/emoji.css",
+					"images/sheet_apple_64.png",
+					"page/notice.html"
+				],
+				"refer": [
+					"page/template.html",
+					"page/avatar-my.html",
+					"page/blog-show.html",
+					"page/avatar-show.html",
+					"page/setting.html",
+					"page/blog-add.html",
+					"page/none.html",
+					"page/my.html",
+					"page/login.html",
+					"page/image-hot.html"
+				],
+				"priority": 0
+			},
+			"page/avatar-index.html": {
+				"resources": [
+					"images/2.jpg",
+					"js/app.js",
+					"page/blog-index.html",
+					"js/init.js",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"images/3.jpg",
+					"js/taffy.js",
+					"images/4.jpg",
+					"js/mui.min.js",
+					"js/avatar-index.js",
+					"images/1.jpg",
+					"css/mui.min.css",
+					"js/template.js",
+					"images/loading.gif",
+					"js/image-index.js"
+				],
+				"refer": [
+					"page/my.html",
+					"page/template.html",
+					"page/notice.html",
+					"page/login.html",
+					"page/blog-add.html",
+					"page/avatar-show.html",
+					null
+				],
+				"priority": 0
+			},
+			"page/image-index.html": {
+				"resources": [
+					"images/2.jpg",
+					"js/app.js",
+					"page/blog-index.html",
+					"js/init.js",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"images/3.jpg",
+					"images/4.jpg",
+					"js/mui.min.js",
+					"images/loading.gif",
+					"images/1.jpg",
+					"css/mui.min.css",
+					"js/template.js",
+					"js/image-index.js",
+					"page/image-index.html",
+					"js/a.js"
+				],
+				"refer": [
+					"page/my.html",
+					"page/template.html",
+					"page/notice.html",
+					"page/image-show.html",
+					"page/login.html",
+					"page/blog-add.html",
+					"page/none.html",
+					"page/image-list.html",
+					"page/image-add.html"
+				],
+				"priority": 0
+			},
+			"page/image-show.html": {
+				"resources": [
+					"images/good.png",
+					"images/good1.png",
+					"js/template.js",
+					"js/taffy.js",
+					"js/md5.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"js/image-show.js",
+					"images/loading.gif",
+					"fonts/mui.ttf",
+					"page/template.html",
+					"page/none.html",
+					"js/a.js"
+				],
+				"refer": [
+					"page/login.html"
+				],
+				"priority": 0
+			},
+			"page/none.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/a.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/image-list.html": {
+				"resources": [
+					"js/template.js",
+					"js/image-list.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/style.css",
+					"page/none.html",
+					"images/loading.gif"
+				],
+				"refer": [
+					"page/image-show.html"
+				],
+				"priority": 0
+			},
+			"page/image-add.html": {
+				"resources": [
+					"js/image-add.js",
+					"images/uploadbg.png",
+					"js/template.js",
+					"js/appupload.js",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"page/template.html",
+					"page/blog-my.html",
+					"page/none.html",
+					"page/image-my.html"
+				],
+				"priority": 0
+			},
+			"page/image-hot.html": {
+				"resources": [
+					"js/image-hot.js",
+					"js/a.js",
+					"css/mui.min.css",
+					"css/style.css"
+				],
+				"refer": [
+					"page/none.html",
+					"page/image-show.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"src/js/app.js",
+				"src/js/mui.min.js",
+				"README.md"
+			]
+		}
+	},
+	"unpackage": [
+		"README.md",
+		"src/",
+		".settings",
+		".project"
+	],"fullscreen":false
+}

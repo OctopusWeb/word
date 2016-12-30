@@ -28,69 +28,22 @@ var big = mui(".big")[0];
 var flip = mui(".flip")[0];
 var imgBk = mui(".imgBk")[0];
 var closedbtn = mui(".closed")[0]; 
-var rotating = mui(".rotating")[0];
 var inputFoot = mui(".inputFoot")[0];
 var inputSearchBtn = mui(".inputSearch")[0]
-var btnImgBk = mui(".btnImgBk")[0];
 var listenContorller = {};
 var imgContorller = {};
-var inputContorller={};
 var searchWord;
-var imgInfo={
-	rotateY:0
-};
-
-setTimeout(function(){
-	btnImgBk.style.display = "none"
-},3000)
-
-var mp3Play = {}
-mp3Play.startPlay1 = function() {
-	if ( plus.audio == undefined ) {
-		alert( "Device not ready!" );
-	}
-	p = plus.audio.createPlayer( "../mp3/newMp3/01_giant_voice_01_en.mp3" );
-	p.play( function () {
-		console.log( "Audio play success!" ); 
-	}, function ( e ) {
-		alert( "Audio play error: " + e.message ); 
-	} ); 
-}
-
-mp3Play.startPlay2 = function() {
-	if ( plus.audio == undefined ){
-		alert( "Device not ready!" );
-	}
-	p = plus.audio.createPlayer( "../mp3/newMp3/05_giant_voice_03_en.mp3" );
-	p.play( function () {
-		console.log( "Audio play success!" ); 
-	}, function ( e ) {
-		alert( "Audio play error: " + e.message ); 
-	} ); 
-}
-
-mp3Play.startPlay3 = function() {
-	if ( plus.audio == undefined ) {
-		alert( "Device not ready!" );
-	}
-	p = plus.audio.createPlayer( "../mp3/newMp3/03_giant_voice_02_en.mp3" );
-	p.play( function () {
-		console.log( "Audio play success!" ); 
-	}, function ( e ) {
-		alert( "Audio play error: " + e.message ); 
-	} ); 
-}
 
 btnActive.addEventListener("tap",function(){
 	btnUnable.style.display = "block";
 	btnActive.style.display = "none";
 	bluePerson.style.display = "block";
-	mp3Play.startPlay1();
+	audio1.play();
 	setTimeout(listenContorller.listenWord,4000)
 });
 
 inputSearchBtn.addEventListener("change",function(){
-	imgContorller.inputList(inputContorller.search(this.value))
+	imgContorller.inputList(imgContorller.search(this.value))
 })
 
 /*语音听写状态*/
@@ -100,12 +53,14 @@ listenContorller.listenWord = function(){
 	text = "";
 	plus.speech.startRecognize( options, function ( s ) {
 		text+=s;
-		text.replace(/。/g,'');
-		searchWord = text;
-		listenContorller.listenOver();
+		if(s == "。"){
+			searchWord = text;
+			listenContorller.listenOver();
+		}
 	}, function ( e ) {
 		listenContorller.listenErr();
-	} );	
+	} );
+	
 }
 /*语音听写状态2*/
 listenContorller.listenWord2 = function(){
@@ -114,11 +69,12 @@ listenContorller.listenWord2 = function(){
 	text = "";
 	plus.speech.startRecognize( options, function ( s ) {
 		text+=s;
-		text.replace(/。/g,'');
-		searchWord = text;
-		listenContorller.listenOver();
+		if(s == "。"){
+			searchWord = text;
+			listenContorller.listenOver();
+		}
 	}, function ( e ) {
-		mp3Play.startPlay1();
+		audio1.play();
 		setTimeout(function(){
 			bluePerson1.style.display = "none";
 			btnUnable.style.display = "none";
@@ -131,10 +87,9 @@ listenContorller.listenWord2 = function(){
 }
 /*语音识别完毕*/
 listenContorller.listenOver = function(){
-	mp3Play.startPlay2();
+	audio2.play();
 	setTimeout(function(){
 		bluePerson.style.display = "none";
-		bluePerson1.style.display = "none";
 		listenContorller.searchImg();
 	},2500)
 }
@@ -142,7 +97,7 @@ listenContorller.listenOver = function(){
 listenContorller.listenErr = function(){
 	bluePerson.style.display = "none";
 	bluePerson1.style.display = "block";
-	mp3Play.startPlay3();
+	audio3.play();
 	setTimeout(function(){
 		listenContorller.listenWord2();
 	},3500)
@@ -151,7 +106,7 @@ listenContorller.listenErr = function(){
 /*通过识别搜索*/
 listenContorller.searchImg = function(){
 	var bol=false;
-	var item = inputContorller.search(searchWord.substring(0,searchWord.length-1));
+	var item = imgContorller.search(searchWord.substring(0,searchWord.length-1));
 	if(item.length==1){
 		maps.src = "../images/maps/"+mapsUrl[item[0]];
 		bol = true;
@@ -163,10 +118,10 @@ listenContorller.searchImg = function(){
 		btnUnable.style.display = "none";
 		btnActive.style.display = "block";
 	}else{
-		inputContorller.inputList(item)
+		imgContorller.inputList(item)
 	}
 }
-
+/*搜索框显示*/
 listenContorller.inputImg = function(){
 	inputFoot.style.display = "block";
 }
@@ -175,8 +130,7 @@ var imgAccesst = {};
 var biandaAccesst = {}; 
 var xuanzhuanAccesst = {};
 
-
-/*图片变形功能初始化*/
+/*图片编辑状态初始化*/
 imgContorller.init = function(){
 	newImg.addEventListener("tap",imgContorller.clear);
 	imgBk.addEventListener("tap",function(e){
@@ -227,29 +181,22 @@ imgContorller.init = function(){
 	closedbtn.addEventListener("tap",function(e){
 		imgContorller.closePage();
 	})
-	rotating.addEventListener("tap",function(e){
-		e.stopPropagation();
-		imgContorller.rotatingPage();
-	})
-	
 }
-/*图片清除*/
+/*清楚图片编辑*/
 imgContorller.clear = function(e){
 	e.stopPropagation();
 	big.style.display = "none";
 	flip.style.display = "none";
 	closedbtn.style.display = "none";
-	rotating.style.display = "none";
 	imgBk.style.display = "block";
 	btnUnable.style.display = "none";
 	btnActive.style.display = "block";
 }
-/*图片显示*/
+/*展开图片编辑*/
 imgContorller.show = function(){
 	big.style.display = "block";
 	flip.style.display = "block";
 	closedbtn.style.display = "block";
-	rotating.style.display = "block";
 	imgBk.style.display = "none";
 	btnUnable.style.display = "block";
 	btnActive.style.display = "block";
@@ -278,11 +225,7 @@ imgContorller.movePage = function(eing){
 	changeImg.style.left = imgAccesst.domx+moveX+"px";
 	changeImg.style.top = imgAccesst.domy+moveY+"px";
 }
-imgContorller.rotatingPage = function(eing){
-	var num = imgInfo.rotateY+=180
-	changeImg.style.transform ='rotateY('+num+'deg)';
-}
-/*input搜索列表绑定事件*/
+/*搜索框图片初始化*/
 imgContorller.inputImg = function(){
 	var inputimg = mui(".imgList ul li");
 	var self = this;
@@ -301,8 +244,8 @@ imgContorller.inputImg = function(){
 		self.bindEvent(i);
 	}
 }
-/*搜索列表显示*/
-inputContorller.inputList = function(list){
+
+imgContorller.inputList = function(list){
 	var index=""
 	for(var i=0;i<list.length;i++){
 		index+='<li><img src="../images/maps/'+mapsUrl[list[i]]+'"/></li>'
@@ -312,8 +255,8 @@ inputContorller.inputList = function(list){
 	inputFoot.style.display = "block";
 	changeImg.style.display = "none";
 }
-/*搜索匹配*/
-inputContorller.search = function(text){
+/*匹配搜索*/
+imgContorller.search = function(text){
 	var item=[];
 	for (var i=0;i<mapsCn.length;i++) {
 		if(mapsCn[i].indexOf(text) != -1){
