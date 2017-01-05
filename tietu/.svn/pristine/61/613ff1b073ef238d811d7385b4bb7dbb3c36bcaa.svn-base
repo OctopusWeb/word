@@ -1,0 +1,37 @@
+{
+	"page/index.html": {
+		"resources": [
+			"images/newImg/06_edit_symmetry.png",
+			"images/newImg/03_magic_lamp_image_01.png",
+			"js/app.js",
+			"images/newImg/02_giant_image_02.png",
+			"images/maps/v2_c0_fruit_g0_t10_juice_peach_shuimitao.png",
+			"source/01the.jpg",
+			"js/maps.js",
+			"images/newImg/01_giant_image_01.png",
+			"images/wrong.png",
+			"css/style.css",
+			"images/maps/v2_c0_fruit_g0_t0_tomato_xihongshi.png",
+			"js/btnContorller.js",
+			"images/maps/v2_c0_fruit_g0_t11_cherry_yingtao_chelizi.png",
+			"images/newImg/04_magic_lamp_image_02.png",
+			"images/newImg/07_edit_control.png",
+			"images/right.png",
+			"images/loading.gif",
+			"images/newImg/05_edit_del.png",
+			"images/jinbi.png",
+			"images/maps/v2_c0_fruit_g0_t1_apple_pingguo.png",
+			"images/newImg/06_edit_xuanzhuan.png",
+			"images/loading1.gif",
+			"source/02be.jpg",
+			"src/js/app.js",
+			"js/v1function.js",
+			"images/maps/v2_c0_fruit_g0_t12_honeydew_melon_hamigua.png",
+			"source/04and.jpg",
+			"source/03of.jpg",
+			"source/05a.jpg",
+			"js/mui.min.js",
+			"js/baiduTemplate.js"
+		]
+	}
+}

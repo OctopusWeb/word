@@ -124,36 +124,11 @@
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
 					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
-						"normal": "unpackage/res/icons/57x57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
-						"retina": "unpackage/res/icons/114x114.png", /*iPhone4程序图标，分辨率：114x114*/
-						"retina7": "unpackage/res/icons/120x120.png", /*iPhone4S/5/6程序图标，分辨率：120x120*/
-						"retina8": "unpackage/res/icons/180x180.png", /*iPhone6 Plus程序图标，分辨率：180x180*/
-						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
-						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
-						"spotlight-retina7": "unpackage/res/icons/80x80.png", /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
-						"settings-retina": "unpackage/res/icons/58x58.png", /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
-						"settings-retina8": "unpackage/res/icons/87x87.png"
 					},
 					"ipad": {
-						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
-						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
-						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
-						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
-						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
-						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
-						"settings-retina": "unpackage/res/icons/58x58.png"
 					}
 				},
 				"android": {
-					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
-					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
-					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
-					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": "unpackage/res/icons/144x144.png"
 				}
 			},
 			"splashscreen": {
@@ -177,7 +152,7 @@
 						
 					}
 				},
-				"android": {"hdpi":"unpackage/res/images/启动页03_480x762_版2_lite.png","ldpi":"unpackage/res/images/启动页02_320x442_版2_lite.png","mdpi":"unpackage/res/images/启动页01_240x282_版2_lite.png","xhdpi":"unpackage/res/images/启动页04_720x1242_版2_lite.png","xxhdpi":"unpackage/res/images/启动页05_1080x1882_版2_lite.png"
+				"android": {
 					 /*普通屏启动图片，分辨率：240x282*/
 					 /*大屏启动图片，分辨率：320x442*/
 					 /*高分屏启动图片，分辨率：480x762*/
@@ -310,7 +285,27 @@
 					"images/loading.gif",
 					"images/x.png",
 					"images/wrong.png",
-					"/images/loading.gif"
+					"/images/loading.gif",
+					"images/newImg/06_edit_symmetry.png",
+					"images/newImg/03_magic_lamp_image_01.png",
+					"images/maps/v2_c0_fruit_g0_t10_juice_peach_shuimitao.png",
+					"images/newImg/02_giant_image_02.png",
+					"js/maps.js",
+					"images/newImg/01_giant_image_01.png",
+					"images/newImg/06_edit_xuanzhuan.png",
+					"images/maps/v2_c0_fruit_g0_t0_tomato_xihongshi.png",
+					"js/btnContorller.js",
+					"images/maps/v2_c0_fruit_g0_t11_cherry_yingtao_chelizi.png",
+					"images/newImg/04_magic_lamp_image_02.png",
+					"images/newImg/07_edit_control.png",
+					"images/newImg/05_edit_del.png",
+					"images/maps/v2_c0_fruit_g0_t1_apple_pingguo.png",
+					"images/loading1.gif",
+					"src/js/app.js",
+					"js/v1function.js",
+					"images/maps/v2_c0_fruit_g0_t12_honeydew_melon_hamigua.png",
+					"js/mui.min.js",
+					"js/baiduTemplate.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -878,7 +873,6 @@
 		},
 		"idle": {
 			"resources": [
-				"src/js/app.js",
 				"src/js/mui.min.js",
 				"README.md"
 			]
