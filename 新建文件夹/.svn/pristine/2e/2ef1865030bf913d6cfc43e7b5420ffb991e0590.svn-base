@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/style.css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<div class='header'>
+			<h1>单&nbsp;&nbsp;&nbsp;&nbsp;词</h1>
+		</div>
+		<div class="topMenu"></div>
+		<div class='wrap'>
+			<div class='main'>
+				<div class="newImg">
+					<div class="btn" id="btn">
+						<img src="../images/newImg/03_magic_lamp_image_01.png" class="btnActive btnImg"/>
+						<img src="../images/newImg/04_magic_lamp_image_02.png" class="btnUnable btnImg"/>
+						<img src="../images/newImg/01_giant_image_01.png" class="bluePerson" />
+						<img src="../images/newImg/02_giant_image_02.png" class="bluePerson bluePerson2" />
+						
+					</div>
+				</div>
+				<div class="imageBar">
+					<div class="image" style="background-image: url();" data-file="" data-answer=""><img style="width: auto;height: auto; margin-top: 40%;" src="../images/loading.gif" /></div> 
+				</div>
+			</div> 
+		</div>
+		<div class="inputFoot">
+			<div class="imgInput">
+				<input type="text" class="inputSearch"/>
+				<div class="add">+</div>
+			</div>
+			
+			<div class="imgList">
+				<ul>
+					<li><img src="../images/maps/v2_c0_fruit_g0_t0_tomato_xihongshi.png"/></li>
+					<li><img src="../images/maps/v2_c0_fruit_g0_t1_apple_pingguo.png"/></li>
+					<li><img src="../images/maps/v2_c0_fruit_g0_t10_juice_peach_shuimitao.png"/></li>
+					<li><img src="../images/maps/v2_c0_fruit_g0_t11_cherry_yingtao_chelizi.png"/></li>
+				</ul>
+			</div>
+		</div>
+		<div class='footer'>
+			<div class="answer">
+				<div class="bar1">
+					<img src="../images/jinbi.png" class="">
+					<div class="score">101</div>
+				</div>
+				<div class="bar2">
+					<img class="answerBtn" src="../images/right.png" />
+				</div>
+	
+			</div>
+			<div class="bar3">
+				<img class="wrongBtn" src="../images/wrong.png" />
+			</div>
+		</div>
+		<div class="bottomMenu"></div>
+		<img class="cacheImg" />
+		<!--<div class="mask" id="mask">
+		</div>-->
+		<div class="appmask" id="appmask">
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/v1function.js" ></script>
+	<script type="text/javascript" src="../js/maps.js" ></script>
+	<script type="text/javascript" src="../js/btnContorller.js" ></script>
+	<script type="text/javascript" src="../js/baiduTemplate.js" ></script>
+	<script type="text/html" id="editTemp">
+		<div class="changeImg editing">
+			<img src="../images/newImg/05_edit_del.png" class="closed editStatusBtn"/>
+			<img src="../images/newImg/06_edit_xuanzhuan.png" class="flip editStatusBtn"/>
+			<img src="../images/newImg/07_edit_control.png" class="big editStatusBtn"/>
+			<img src="../images/newImg/06_edit_symmetry.png" class="rotating editStatusBtn"/>
+			
+			<img src="<%=_src%>" class="map"/>
+		</div>
+	</script>
+</html>
