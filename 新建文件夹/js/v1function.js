@@ -101,10 +101,10 @@ function outWord() {
 		});
 	}
 }
-
 //下一个单词
 function nextWord(callback) {
 	readnum++;
+	var elements = document.getElementsByClassName("changeImg");
 	var d = data[readnum];
 	if(!d) {
 		reset();
@@ -124,6 +124,10 @@ function nextWord(callback) {
 	setTimeout(function() {
 		cacheSource(readnum);
 	}, 300);
+	if(elements.length == 0){return}
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
 }
 
 //判断是否正确

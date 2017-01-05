@@ -101,24 +101,30 @@ listenContorller.toggleNoticePic = function(a,b){
 }
 /*语音听写状态*/
 listenContorller.listenWord = function(){
-	var flag = false;
-	var options = {engine : 'iFly',lang : 'zh-cn',punctuation:false ,onend:function(e){
-		if(!flag){
-			plus.speech.stopRecognize();
-			listenContorller.listenErr();
-			flag = false;
-		}
-	}};
-	plus.speech.startRecognize( options, function ( s ) {
+//	var flag = false;
+//	var options = {engine : 'iFly',lang : 'zh-cn',punctuation:false ,onend:function(e){
+//		if(!flag){
+//			plus.speech.stopRecognize();
+//			listenContorller.listenErr();
+//			flag = false;
+//		}
+//	}};
+//	plus.speech.startRecognize( options, function ( s ) {
+//		flag = true;
+//		searchWord = s;
+//		mui.toast("您说的是："+s)
+//		listenContorller.listenOver();
+//	}, function ( e ) {
+//		flag = true;
+//		plus.speech.stopRecognize();
+//		listenContorller.listenErr();
+//	} );	
 		flag = true;
+		statusFlag = 1;
+		s="苹果"
 		searchWord = s;
 		mui.toast("您说的是："+s)
 		listenContorller.listenOver();
-	}, function ( e ) {
-		flag = true;
-		plus.speech.stopRecognize();
-		listenContorller.listenErr();
-	} );	
 }
 /*语音听写状态2*/
 listenContorller.listenWord2 = function(){
@@ -154,13 +160,13 @@ listenContorller.listenOver = function(){
 	mp3Play.startPlay(3,function(){
 		listenContorller.toggleNoticePic(0,0);
 		if(statusFlag == 1){
-			listenContorller.inputImg();
+			listenContorller.inputImg1();
 		}
 		listenContorller.searchImg();
 	});
 }
 /*识别错误*/
-listenContorller.listenErr = function(){
+listenContorller.listenErr = function(){ 
 	listenContorller.toggleNoticePic(0,1)
 	mp3Play.startPlay(2,function(){
 		listenContorller.listenWord2();
@@ -187,6 +193,11 @@ listenContorller.inputImg = function(){
 	inputFoot.style.display = "block";
 	statusFlag = 0;
 	imgContorller.inputImg();
+}
+listenContorller.inputImg1 = function(){
+	inputFoot.style.display = "block";
+	statusFlag = 0;
+	imgContorller.inputImg1();
 }
 
 var imgAccesst = {};
@@ -275,6 +286,7 @@ imgContorller.bindEvt = function(dom){
 imgContorller.clear = function(e){
 	e.stopPropagation();
 	var editingDom = this.querySelector(".editing");
+	if(editingDom.length == 0){return}
 	var editingDoms = editingDom.querySelectorAll(".editStatusBtn");
 	for(var i = 0 ; i < editingDoms.length ; i++){
 		editingDoms[i].style.display = "none";
@@ -335,6 +347,17 @@ imgContorller.inputImg = function(){
 		inputFoot.style.display = "none";
 		imgContorller.show(document.getElementById("btn"));
 		imgContorller.init();
+	})
+}
+imgContorller.inputImg1 = function(){
+	var inputimg = mui(".imgList ul li");
+	var self = this;
+	mui(".imgList").on("tap","li",function(){
+		var src = this.children[0].src;
+		var num = src.lastIndexOf("/");
+		var imgUrl = document.getElementsByClassName("map");
+		imgUrl[imgUrl.length-1].src = "../images/maps/"+src.substring(num+1,src.length)
+		inputFoot.style.display = "none";
 	})
 }
 /*搜索列表显示*/
@@ -402,14 +425,18 @@ function setTietu(){
 	return JSON.stringify(tietuArr);
 }
 function clearTietu(){
-	var domBox = mui("#btn");
-	domBox.innerHTML = "";
+	removeElementsByClass("changeImg")
 }
-
+function removeElementsByClass(className){
+    var elements = document.getElementsByClassName(className);
+    if(elements.length == 0){return}
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
 function initTietu(num){
 	if(!localStorage["tietu"+num]){return}
 	var arr = JSON.parse(localStorage["tietu"+num]);
-	clearTietu();
 	var domBox = mui("#btn")[0];
 	var index=domBox.innerHTML;
 	for (var i=0;i<arr.length;i++) {
@@ -433,4 +460,9 @@ function initTietu(num){
 		domBox1.style.webkitTransform=arr[i][5];
 	}
 	imgContorller.init();
+	var doms = domBox.getElementsByClassName("editStatusBtn")
+	for(var i = 0 ; i < doms.length ; i++){
+		doms[i].style.display = "none";
+	}
+	listenContorller.btnCtr("true")
 }
