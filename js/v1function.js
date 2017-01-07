@@ -2,10 +2,10 @@ var data = []
 var readnum = 0;
 var lockBtn = 0;
 var resetLock = 0;
-var sourceUrl = 'http://danci-app.b0.upaiyun.com/source/v1/';
-var sourceVersion = 'v1';
+var sourceUrl = 'http://danci-app.b0.upaiyun.com/source/v2/';
+var sourceVersion = 'v2';
 var hz = '!thumb';
-var cachePre = 'v11';
+var cachePre = 'v21';
 
 mui.plusReady(function() {
 	//reset()
