@@ -81,6 +81,14 @@ btnActive.addEventListener("tap", function(e) {
 
 add.addEventListener("tap", function() {
 	imgList.style.display = "block";
+	if(!inputSearchBtn.value) {
+		mui.toast('搜索内容不能为空')
+		return
+	}
+	searchWord = inputSearchBtn.value;
+	inputSearchBtn.value="";
+	listenContorller.listenOver();
+	inputFoot.style.display = "none";
 })
 inputSearchBtn.addEventListener("focus", function() {
 	imgList.style.display = "none";
@@ -135,6 +143,7 @@ listenContorller.listenWord = function() {
 		plus.speech.startRecognize(options, function(s) {
 			flag = true;
 			searchWord = s;
+<<<<<<< HEAD
 //			mui.toast("您说的是：" + s)
 			listenContorller.listenOver();
 		}, function(e) {
@@ -170,6 +179,43 @@ listenContorller.listenWord2 = function() {
 			listenContorller.listenOver();
 		}, function(e) {
 			plus.speech.stopRecognize();
+=======
+			mui.toast("您说的是：" + s)
+			listenContorller.listenOver();
+		}, function(e) {
+			flag = true;
+			plus.speech.stopRecognize();
+			listenContorller.listenErr();
+		});
+	}
+	/*语音听写状态2*/
+listenContorller.listenWord2 = function() {
+		var flag = false;
+		var options = {
+			engine: 'iFly',
+			lang: 'zh-cn',
+			punctuation: false,
+			onend: function(e) {
+				if(!flag) {
+					plus.speech.stopRecognize();
+					mp3Play.startPlay(4, function() {
+						listenContorller.toggleNoticePic(0, 0);
+						listenContorller.btnCtr();
+					});
+					flag = false;
+				}
+			}
+		};
+		plus.speech.startRecognize(options, function(s) {
+			flag = true;
+			statusFlag = 1;
+			searchWord = s;
+			
+			mui.toast("您说的是：" + s)
+			listenContorller.listenOver();
+		}, function(e) {
+			plus.speech.stopRecognize();
+>>>>>>> 062ed92d82ddeeeafe6756ab1d004bcd9709fbb5
 			flag = true;
 			mp3Play.startPlay(4, function() {
 				listenContorller.toggleNoticePic(0, 0)
@@ -200,10 +246,17 @@ listenContorller.listenErr = function() {
 listenContorller.searchImg = function() {
 	var bol = false;
 	if(statusFlag == 1){
+<<<<<<< HEAD
 		var item = inputContorller.search((typeof searchWord) == 'string' ? searchWord : searchWord[0],false);
 		statusFlag = 0;
 	}else{
 		var item = inputContorller.search((typeof searchWord) == 'string' ? searchWord : searchWord[0],true);
+=======
+		var item = inputContorller.search(searchWord[0],false);
+		statusFlag = 0;
+	}else{
+		var item = inputContorller.search(searchWord[0],true);
+>>>>>>> 062ed92d82ddeeeafe6756ab1d004bcd9709fbb5
 	}
 	if(item.length == 1) {
 		appendHTML(document.getElementById("btn"), baidu.template("editTemp", {
@@ -240,6 +293,7 @@ listenContorller.showGalleryList = function(arr) {
 	var index="<ul>"
 	for (var i=0;i<arr.length;i++) {
 		index+='<li><img src="../images/maps/'+arr[i]+'"/></li>'
+<<<<<<< HEAD
 	}
 	index+='</ul>';
 	mui(".imgList")[0].innerHTML = index;
@@ -313,6 +367,96 @@ inputContorller.search = function(text,bol) {
 			}
 		}
 	}
+=======
+	}
+	index+='</ul>';
+	mui(".imgList")[0].innerHTML = index;
+	mui(".imgList").on("tap", "li", function(e) {
+		e.stopPropagation();
+		var _src = this.children[0].src;
+		var num = _src.lastIndexOf("/");
+		var editDom = document.querySelector(".pic-container.active");
+		if(editDom){
+			editDom.parentNode.removeChild(editDom);
+		}
+		appendHTML(document.getElementById("btn"), baidu.template("editTemp", {
+			edit: true,
+			_src: _src,
+			domid: "",
+			setPara:false
+		}))
+		listenContorller.hideGallery()
+		imgContorller.init();
+	})
+}
+listenContorller.hideGallery = function() {
+	inputFoot.style.display = "none";
+}
+mui(".imgList").on("tap", "li", function() {
+	var _src = this.children[0].src;
+	var num = _src.lastIndexOf("/");
+	var editDom = document.querySelector(".pic-container.active");
+	if(editDom){
+		editDom.parentNode.removeChild(editDom);
+	}
+	appendHTML(document.getElementById("btn"), baidu.template("editTemp", {
+		edit: true,
+		_src: _src,
+		domid: "",
+		setPara:false
+	}))
+	listenContorller.hideGallery()
+	imgContorller.init();
+})
+/*图片变形功能初始化*/
+imgContorller.init = function() {
+		//循环初始化新增编辑框的编辑函数
+		var editDoms = document.querySelectorAll(".pic-container");
+		for(var i = 0; i < editDoms.length; i++) {
+			if(!editDoms[i].getAttribute("data-inited")) {
+				editObjs.push(new imgCtr(editDoms[i], 0, 120, {
+					closeCallback: listenContorller.btnCtr
+				}));
+				editDoms[i].setAttribute("data-inited", true)
+			}
+		}
+	}
+	//确认编辑状态
+
+document.body.addEventListener("tap", function(e) {
+	if(e.target.className.indexOf('btn') >= 0) {
+		var editDoms = document.querySelectorAll(".pic-container.active");
+		for(var i = 0; i < editDoms.length; i++) {
+			console.log(editDoms[i].className)
+			editDoms[i].classList.remove("active");
+		}
+		listenContorller.btnCtr();
+		setTietu()
+	}
+})
+/*搜索匹配*/
+inputContorller.search = function(text,bol) {
+	if(/^[\u4e00-\u9fa5]+$/.test(text)){
+		text.replace(/。/g,'');
+		console.log(text)
+		text = codefans_net_CC2PY(text).toLowerCase();
+	}else{
+		text = text.toLowerCase();
+	}
+	var item = [];
+	var itemLinshi;
+	var json = picData.allVersion;
+	for (version in json) {
+		for (type in json[version]) {
+			for (group in json[version][type]) {
+				for (var i=0;i<json[version][type][group].length;i++) {
+					bol?firstListen(json[version][type][group][i],text):secondListen(json[version][type][group][i],text,json[version][type][group])
+				}
+				
+			}
+		}
+	}
+>>>>>>> 062ed92d82ddeeeafe6756ab1d004bcd9709fbb5
 	function firstListen(mapsWord,text){
 		if(mapsWord.indexOf(text) != -1) {
 			item.push(mapsWord);

@@ -1,0 +1,262 @@
+html,
+body {
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
+.mask,.appmask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background: rgba(0,0,0,.5);
+	background-image: url(../images/loading1.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30px;
+	width: 100%;
+	height: 100%;
+}
+.appmask{
+	background: rgba(0,0,0,0);
+	background-image: none;
+}
+
+.mask img{
+	display: block;
+	width: 30px;
+	margin: 0 auto;
+	position: relative;
+	top: 45%;
+}
+/*布局*/
+
+.header {
+	background: #e7e7e7;
+	position: absolute;
+	top: 0px;
+	height: 60px;
+	width: 100%;
+	display: -webkit-box;
+	display: -moz-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+}
+
+.wrap {
+	position: absolute!important;
+	position: relative;
+	top: 120px;
+	bottom: 195px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	height: auto!important;
+}
+
+.main {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.footer {
+	position: absolute;
+	bottom: 70px;
+	height: 95px;
+	width: 100%;
+}
+
+
+/*end 布局*/
+
+h1 {
+	font-size: 25px;
+	font-family: "楷体", "楷体_GB2312"
+}
+
+.topMenu {
+	top: 60px;
+	height: 60px;
+	position: absolute;
+	width: 100%;
+}
+
+.bottomMenu {
+	bottom: 0px;
+	height: 60px;
+	position: absolute;
+	width: 100%;
+}
+
+.imageBar {
+	background: #e7e7e7;
+	max-width: 720px;
+	max-height: 720px;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	display: -webkit-box;
+	display: -moz-box;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+}
+
+.image {
+	max-width: 710px;
+	max-height: 710px;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	display: block;
+	overflow: hidden;
+	background: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain;
+}
+
+.imageBar img {
+	padding: 0px;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+
+.bar1 {
+	width: 120px;
+}
+
+.bar1 img {
+	position: absolute;
+	left: 30px;
+	top: 25px;
+	max-width: 70px;
+}
+
+.bar1 .score {
+	float: right;
+	display: block;
+}
+
+.bar2 {}
+
+.bar2 img {
+	position: absolute;
+	left: 150px;
+	width: 100px;
+}
+
+.bar3 {}
+
+.bar3 img {
+	position: absolute;
+	left: 280px;
+	top: 25px;
+	width: 66px;
+}
+
+.auto {
+	width: 30px;
+	height: 30px;
+}
+
+.newImg{width: 100%;height: 100%;position: absolute;background: none;top: 0;left: 0;}
+.newImg .btn{width: 100%;height: 100%;position: absolute;left: 0;background: none;}
+.newImg .btn .btnImg{width: 80px;position: absolute;right: 10px;bottom: 0;height: auto;}
+.newImg .btn .btnImgBk{z-index: 1000;height: 80px;position: absolute;width: 80px;}
+.btnUnable{display: none;}
+.newImg .btn .bluePerson{width: auto;position: absolute;right: 0px;height: 70%;bottom: 40px;display: none;z-index: 1000;}
+.newImg .btn .bluePerson2{width: auto;z-index: 1000;}
+
+.changeImg{width: 120px;height: 120px;position: absolute;right: 20px;top: 50px;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
+.changeImg.editing{border: 1px #ccc solid;}
+.changeImg .map{width: 90%;height:90%;position: absolute;top: 5%;left: 5%;background-size: 100%;background-repeat: no-repeat;background-position: center;}
+.changeImg .closed{width: 20px;height: 20px;position: absolute;top: -10px;left: -10px;}
+.changeImg .flip{width: 20px;height: 20px;position: absolute;top: -10px;right: -10px;}
+.changeImg .rotating{width: 20px;height: 20px;position: absolute;bottom: -10px;left: -10px;}
+.changeImg .big{width: 20px;height: 20px;position: absolute;bottom: -10px;right: -10px;}
+.changeImg .imgBk{width: 100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 100;display: none;}
+
+.inputFoot{position: absolute;bottom: 0;width: 100%;z-index: 100;display: none;overflow: hidden;}
+.inputFoot .add{width: 20px;height: 20px;border: 1px #ccc solid;border-radius: 50%;line-height: 20px;color: #ccc;
+text-align: center;margin: 0;padding: 0;display: block;float: right;margin-top: 8px;margin-right: 5%;font-size: 18px;}
+.inputFoot .imgInput{width: 100%;height: 40px;background: #f5f5f7;border: none;float: left;margin: 0;padding: 0;}
+.inputFoot .imgInput input{width: 70%;float: left;height: 25px;border: none;margin-left: 10%;margin-top: 8px;padding: 0;}
+.inputFoot ul{width: 100%;height: 220px;float: left;background: #453c3b;margin: 0;padding: 0;overflow: auto;}
+.inputFoot ul li{width: 17%;height: 70px;float: left;background: #4b4755;border-radius: 10px;margin-left: 2%;list-style: none;margin-top: 10px;overflow: hidden;}
+.inputFoot ul li img{width: 90%;height: auto;margin: 5%;float: left;}
+
+
+.pic-container{
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	width: 150px;
+	height: 150px;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	-webkit-transform-origin: center;
+	-moz-transform-origin: center;
+	-ms-transform-origin: center;
+	-o-transform-origin: center;
+	transform-origin: center;
+}
+.pic-container-inner{
+	z-index: 500;
+	width: 125px;
+	height: 125px;
+	position: absolute;
+	left: 12.5px;
+	top: 12.5px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	-webkit-transform-origin: center;
+	-moz-transform-origin: center;
+	-ms-transform-origin: center;
+	-o-transform-origin: center;
+	transform-origin: center;
+}
+.pic-container.active .pic-container-inner{
+	border: #cccccc 1px solid;
+}
+.pic-container i.edit-btn{
+	display: none;
+}
+.pic-container.active i.edit-btn{
+	display: block;
+}
+.pic-container i.close,.pic-container i.flip,.pic-container i.resize{
+	z-index: 501;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position: center;
+}
+.pic-container i.close{
+	background-image: url(../images/del.png);
+	left: -12.5px;
+	top: -12.5px;
+}
+.pic-container i.flip{
+	background-image: url(../images/flip.png);
+	right: -12.5px;
+	top: -12.5px;
+}
+.pic-container i.resize{
+	background-image: url(../images/resize.png);
+	right: -12.5px;
+	bottom: -12.5px;
+}

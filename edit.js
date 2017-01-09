@@ -62,9 +62,12 @@
 				}
 			})
 			this.dom.addEventListener("tap",function(e){
+<<<<<<< HEAD
 				if(that.getEditState()) {
 					return;
 				}
+=======
+>>>>>>> 062ed92d82ddeeeafe6756ab1d004bcd9709fbb5
 				e.stopPropagation();
 				var bkMP3 = e.target.style.backgroundImage;
 				
@@ -119,7 +122,10 @@
 					statusFlag = 1;
 					setTietu();
 				});
+<<<<<<< HEAD
 				listenContorller.hideGallery();
+=======
+>>>>>>> 062ed92d82ddeeeafe6756ab1d004bcd9709fbb5
 			})
 		},
 		getEditState: function() {

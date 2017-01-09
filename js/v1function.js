@@ -46,9 +46,13 @@ mui.plusReady(function() {
 	}
 	//点击图片
 	mui(".newImg")[0].addEventListener("tap",function(){
+<<<<<<< HEAD
 		if(!checkHasEdit()){
 			playWord()
 		}
+=======
+		playWord()
+>>>>>>> 062ed92d82ddeeeafe6756ab1d004bcd9709fbb5
 	})
 	//点击正确按钮
 	mui('body').on('tap', '.answer .bar2', function() {
