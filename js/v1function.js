@@ -25,6 +25,10 @@ mui.plusReady(function() {
 
 	//点击错误按钮
 	mui('body').on('tap', '.wrongBtn', function() {
+		if(checkHasEdit()){
+			mui.toast("请先退出贴图编辑状态");
+			return;
+		}
 		//防止频繁点击按钮
 		if(lockBtn == 1) {
 			plus.nativeUI.toast('点击太频繁')
@@ -36,14 +40,20 @@ mui.plusReady(function() {
 		}, 1000);
 		outWord();
 	});
-
+	
+	function checkHasEdit(){
+		return document.querySelectorAll(".pic-container.active").length > 0 ? true : false
+	}
 	//点击图片
-	mui('body').on('tap', '.imageBar', function() {
-		playWord();
-	});
-
+	mui(".newImg")[0].addEventListener("tap",function(){
+		playWord()
+	})
 	//点击正确按钮
 	mui('body').on('tap', '.answer .bar2', function() {
+		if(checkHasEdit()){
+			mui.toast("请先退出贴图编辑状态");
+			return;
+		}
 		//防止频繁点击按钮
 		if(lockBtn == 1) {
 			plus.nativeUI.toast('点击太频繁')

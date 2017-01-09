@@ -37,7 +37,6 @@ var mp3Play = {};
 var picData;
 
 init();
-
 function init(){
 	mui.getJSON("../js/maps.json",function(response){
 		picData = response;
@@ -45,6 +44,7 @@ function init(){
 //		var item = inputContorller.search(pinyins,false);
 	});
 }
+
 mp3Play.startPlay = function(type, callback) {
 	if(plus.audio == undefined) {
 		alert("Audio not ready!");
@@ -86,6 +86,7 @@ add.addEventListener("tap", function() {
 		return
 	}
 	searchWord = inputSearchBtn.value;
+	inputSearchBtn.value="";
 	listenContorller.listenOver();
 	inputFoot.style.display = "none";
 })
@@ -93,16 +94,17 @@ inputSearchBtn.addEventListener("focus", function() {
 	imgList.style.display = "none";
 })
 inputSearchBtn.onkeyup = function(e) {
-		if(e.keyCode == 13) {
-			if(!this.value) {
-				mui.toast('搜索内容不能为空')
-				return
-			}
-			searchWord = this.value;
-			listenContorller.listenOver();
-			inputFoot.style.display = "none";
+	if(e.keyCode == 13) {
+		if(!this.value) {
+			mui.toast('搜索内容不能为空')
+			return
 		}
+		searchWord = this.value;
+		this.value = "";
+		listenContorller.listenOver();
+		inputFoot.style.display = "none";
 	}
+}
 	//speech按钮状态切换
 listenContorller.btnCtr = function(type) {
 	if(type == "un") {
@@ -181,14 +183,14 @@ listenContorller.listenWord2 = function() {
 	}
 	/*语音识别完毕*/
 listenContorller.listenOver = function() {
-		mp3Play.startPlay(3, function() {
-			listenContorller.toggleNoticePic(0, 0);
-			if(statusFlag == 1) {
-				listenContorller.showGallery();
-			}
-			listenContorller.searchImg();
-		});
-	}
+	mp3Play.startPlay(3, function() {
+		listenContorller.toggleNoticePic(0, 0);
+		if(statusFlag == 1) {
+			listenContorller.showGallery();
+		}
+		listenContorller.searchImg();
+	});
+}
 	/*识别错误*/
 listenContorller.listenErr = function() {
 	listenContorller.toggleNoticePic(0, 1)
@@ -222,7 +224,16 @@ listenContorller.searchImg = function() {
 		})
 		listenContorller.btnCtr();
 	}else{
+		listenContorller.showGallery();
 		listenContorller.showGalleryList(item);
+		appendHTML(document.getElementById("btn"), baidu.template("editTemp", {
+			edit: true,
+			_src: "../images/maps/" + item[0],
+			domid: "",
+			setPara:false
+		}))
+		bol = true;
+		imgContorller.init();
 	}
 }
 listenContorller.showGallery = function() {
@@ -235,6 +246,23 @@ listenContorller.showGalleryList = function(arr) {
 	}
 	index+='</ul>';
 	mui(".imgList")[0].innerHTML = index;
+	mui(".imgList").on("tap", "li", function(e) {
+		e.stopPropagation();
+		var _src = this.children[0].src;
+		var num = _src.lastIndexOf("/");
+		var editDom = document.querySelector(".pic-container.active");
+		if(editDom){
+			editDom.parentNode.removeChild(editDom);
+		}
+		appendHTML(document.getElementById("btn"), baidu.template("editTemp", {
+			edit: true,
+			_src: _src,
+			domid: "",
+			setPara:false
+		}))
+		listenContorller.hideGallery()
+		imgContorller.init();
+	})
 }
 listenContorller.hideGallery = function() {
 	inputFoot.style.display = "none";
@@ -269,6 +297,7 @@ imgContorller.init = function() {
 		}
 	}
 	//确认编辑状态
+
 document.body.addEventListener("tap", function(e) {
 	if(e.target.className.indexOf('btn') >= 0) {
 		var editDoms = document.querySelectorAll(".pic-container.active");
@@ -282,7 +311,13 @@ document.body.addEventListener("tap", function(e) {
 })
 /*搜索匹配*/
 inputContorller.search = function(text,bol) {
-	text = codefans_net_CC2PY(text).toLowerCase();
+	if(/^[\u4e00-\u9fa5]+$/.test(text)){
+		text.replace(/。/g,'');
+		console.log(text)
+		text = codefans_net_CC2PY(text).toLowerCase();
+	}else{
+		text = text.toLowerCase();
+	}
 	var item = [];
 	var itemLinshi;
 	var json = picData.allVersion;
@@ -307,7 +342,8 @@ inputContorller.search = function(text,bol) {
 			itemLinshi = mapsGroup
 		}
 	}
-	if(!bol){item = item.concat(itemLinshi)}
+	
+	if(!bol && item.length != 0){item = item.concat(itemLinshi)}
 	return item;
 }
 
