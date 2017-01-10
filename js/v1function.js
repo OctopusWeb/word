@@ -128,6 +128,7 @@ function nextWord(callback) {
 		//debug(d[1])
 		plus.nativeUI.showWaiting();
 		download(d[1], function(src) {
+			initTietu(d[2]);
 			plus.nativeUI.closeWaiting();
 			//debug(src);
 			document.querySelector('.imageBar').innerHTML = '<div class="image" style="background-image: url(' + src + ');" data-file="' + d[2] + '" data-answer="' + d[3] + '"></div>';
@@ -157,16 +158,22 @@ function reset() {
 	}
 	resetLock = 1;
 
-	localStorage.clear();
+	clearLocal();
 	document.querySelector('.imageBar').innerHTML = '<img src="" class="auto" data-file="" data-answer="" />';
 	plus.nativeUI.confirm('恭喜您，全部学完！复习一下吧。', function() {
 		setTimeout(function() {
-			location.reload()
+			location.reload();
+			var d = data[0];
+			if(d){initTietu(d[2]);}
 		}, 300);
 	}, "", ["好的！"]);
 	return;
 }
-
+function clearLocal(){
+	setC('readnum', 0);
+	setC('score', 101);
+	setC('databases', []);
+}
 
 
 //播放单词
@@ -304,8 +311,8 @@ function getDatabase() {
 
 				//第一组为本地资源
 				if(i == 0) {
-					videoUrl1 = '../source/' + str1 + '.mp3';
-					videoUrl2 = '../source/' + str2 + '.mp3';
+					videoUrl1 = '_www/source/' + str1 + '.mp3';
+					videoUrl2 = '_www/source/' + str2 + '.mp3';
 					imageUrl1 = '../source/' + str1 + '.jpg';
 					imageUrl2 = '../source/' + str2 + '.jpg';
 				} else {
@@ -325,7 +332,7 @@ function getDatabase() {
 					}
 					if(i == 0) {
 						imageUrl = '../source/' + data[i][j][1] + '.jpg';
-						videoUrl = '../source/' + data[i][j][1] + '.mp3';
+						videoUrl = '_www/source/' + data[i][j][1] + '.mp3';
 					} else {
 						imageUrl = sourceUrl + data[i][j][1] + '.jpg' + hz;
 						videoUrl = sourceUrl + data[i][j][1] + '.mp3';
