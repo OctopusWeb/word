@@ -241,7 +241,13 @@ listenContorller.searchImg = function() {
 					other:item.other
 				});
 			}else{
-				var data1 = item.curItem.concat(item.cur)
+				var cr = item.cur;
+				var ci = cr.indexOf(item.curItem[0]);
+				var newCr = [];
+				for(var i = ci+1 ; i < cr.length-ci-1 ; i++){
+					newCr.push(cr[i])
+				}
+				var data1 = item.curItem.concat(newCr)
 				var data = {
 					"curItem":data1,
 					"other":item.other
