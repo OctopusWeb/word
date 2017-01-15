@@ -77,6 +77,7 @@
 			})
 			this.dom.addEventListener("longtap", function(e) {
 				e.stopPropagation();
+				listenContorller.btnCtr("un");
 				that.modifyEditState(true)
 			})
 			this.dom.addEventListener("dragstart", function(e) {

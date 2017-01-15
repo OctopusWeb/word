@@ -22,6 +22,7 @@ body {
 .appmask{
 	background: rgba(0,0,0,0);
 	background-image: none;
+	display: none;
 }
 
 .mask img{
@@ -189,10 +190,11 @@ h1 {
 .inputFoot{position: absolute;bottom: 0;width: 100%;z-index: 100;display: none;overflow: hidden;}
 .inputFoot .add{width: 20px;height: 20px;border: 1px #ccc solid;border-radius: 50%;line-height: 20px;color: #ccc;
 text-align: center;margin: 0;padding: 0;display: block;float: right;margin-top: 8px;margin-right: 5%;font-size: 18px;}
-.inputFoot .imgInput{width: 100%;height: 40px;background: #f5f5f7;border: none;float: left;margin: 0;padding: 0;}
+.inputFoot .imgInput{width: 100%;height: 40px;background: #f5f5f7;border: none;float: left;margin: 0;padding: 0;position: relative;z-index: 5000;}
 .inputFoot .imgInput input{width: 70%;float: left;height: 25px;border: none;margin-left: 10%;margin-top: 8px;padding: 0;}
-.inputFoot ul{width: 100%;height: 220px;float: left;background: #453c3b;margin: 0;padding: 0;overflow: auto;}
-.inputFoot ul li{width: 17%;height: 70px;float: left;background: #4b4755;border-radius: 10px;margin-left: 2%;list-style: none;margin-top: 10px;overflow: hidden;}
+.inputFoot .container{width: 100%;height: 220px;background: #453c3b;margin: 0;padding: 0;padding-top: 40px;}
+/*.inputFoot .imgList{width: 100%;height: 220px;background: #453c3b;margin: 0;padding: 0}*/
+.inputFoot ul li{width: 70px;height: 70px;float: left;background: #4b4755;border-radius: 10px;margin-left: 10px;list-style: none;margin-top: 10px;overflow: hidden;}
 .inputFoot ul li img{width: 90%;height: auto;margin: 5%;float: left;}
 
 

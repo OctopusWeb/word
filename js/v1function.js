@@ -6,7 +6,6 @@ var sourceUrl = 'http://danci-app.b0.upaiyun.com/source/v2/';
 var sourceVersion = 'v2';
 var hz = '!thumb';
 var cachePre = 'v21';
-
 mui.plusReady(function() {
 	//reset()
 	data = getDatabase();
@@ -128,10 +127,11 @@ function nextWord(callback) {
 		//debug(d[1])
 		plus.nativeUI.showWaiting();
 		download(d[1], function(src) {
-			initTietu(d[2]);
+			var _id = d[0].replace(/\d+/g,'');
+			initTietu(_id);
 			plus.nativeUI.closeWaiting();
 			//debug(src);
-			document.querySelector('.imageBar').innerHTML = '<div class="image" style="background-image: url(' + src + ');" data-file="' + d[2] + '" data-answer="' + d[3] + '"></div>';
+			document.querySelector('.imageBar').innerHTML = '<div class="image" style="background-image: url(' + src + ');" data-id="'+_id+'" data-file="' + d[2] + '" data-answer="' + d[3] + '"></div>';
 			//回调函数
 			callback ? callback() : "";
 		});
@@ -164,7 +164,8 @@ function reset() {
 		setTimeout(function() {
 			location.reload();
 			var d = data[0];
-			if(d){initTietu(d[2]);}
+			var _id = d[0].replace(/\d+/g,'');
+			if(d){initTietu(_id)}
 		}, 300);
 	}, "", ["好的！"]);
 	return;
@@ -244,8 +245,9 @@ function loadData(obj) {
 	var d = data[readnum];
 	download(d[1], function(src) {
 		//debug(src)
-		initTietu(d[2]);
-		document.querySelector('.imageBar').innerHTML = '<div class="image" style="background-image: url(' + src + ');" data-file="' + d[2] + '" data-answer="' + d[3] + '"></div>';
+		var _id = d[0].replace(/\d+/g,'');
+		initTietu(_id);
+		document.querySelector('.imageBar').innerHTML = '<div class="image" style="background-image: url(' + src + ');" data-id="'+_id+'" data-file="' + d[2] + '" data-answer="' + d[3] + '"></div>';
 		if(obj) {
 			setTimeout(function() {
 				obj();
