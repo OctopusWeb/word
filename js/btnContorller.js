@@ -342,7 +342,8 @@ document.body.addEventListener("tap", function(e) {
 	})
 	/*搜索匹配*/
 inputContorller.search = function(text, bol) {
-	mui.toast("您说的是:" + text)
+	var text1 = text;
+	
 	if(/^[\u4e00-\u9fa5]+$/.test(text)) { 
 		text.replace(/。/g, '');
 		text = codefans_net_CC2PY(text).toLowerCase();
@@ -350,7 +351,7 @@ inputContorller.search = function(text, bol) {
 		text = text.toLowerCase();
 	}
 	text = correction(text)
-	console.log("您说的是:" + text)
+	mui.toast("您说的是:" +text1 + text);
 	var item = [];
 	var itemUse =[]; 
 	var itemOther = [];

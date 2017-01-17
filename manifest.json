@@ -152,7 +152,7 @@
 						
 					}
 				},
-				"android": {"hdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页03_480x762.png","ldpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页02_320x442.png","mdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页01_240x282.png","xhdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页04_720x1242.png","xxhdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页05_1080x1882.png"
+				"android": {"hdpi":"C:/Users/loki/Desktop/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页03_480x762.png","ldpi":"C:/Users/loki/Desktop/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页02_320x442.png","mdpi":"C:/Users/loki/Desktop/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页01_240x282.png","xhdpi":"C:/Users/loki/Desktop/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页04_720x1242.png","xxhdpi":"C:/Users/loki/Desktop/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页05_1080x1882.png"
 					 /*普通屏启动图片，分辨率：240x282*/
 					 /*大屏启动图片，分辨率：320x442*/
 					 /*高分屏启动图片，分辨率：480x762*/
