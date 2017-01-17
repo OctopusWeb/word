@@ -152,7 +152,7 @@
 						
 					}
 				},
-				"android": {
+				"android": {"hdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页03_480x762.png","ldpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页02_320x442.png","mdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页01_240x282.png","xhdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页04_720x1242.png","xxhdpi":"/Users/Nelson/Downloads/Third Project/单词App 2.0版 安卓项目需求文档 版2/阿拉丁单词_启动页_2017 01 13/阿拉丁单词_启动页05_1080x1882.png"
 					 /*普通屏启动图片，分辨率：240x282*/
 					 /*大屏启动图片，分辨率：320x442*/
 					 /*高分屏启动图片，分辨率：480x762*/
@@ -530,7 +530,18 @@
 					"images/maps/v2_c2_flower_g0_t31_chinese_flowering_apple_haitanghua.png",
 					"images/maps/v2_c2_flower_g0_t66_candytuft_baizhukui.png",
 					"images/maps/v2_c2_flower_g0_t25_sunflower_xiangrikui_kuihua_xiangyanghua.png",
-					"images/maps/v2_c0_fruit_g0_t60_grapefruit_putaoyou.png"
+					"images/maps/v2_c0_fruit_g0_t60_grapefruit_putaoyou.png",
+					"images/maps/v2_c1_vegetable_g0_t17_mushroom_mogu.png",
+					"images/maps/v2_c0_fruit_g0_t13_strawberry_caomei.png",
+					"images/maps/v2_c0_fruit_g0_t16_durian_liulian.png",
+					"images/maps/v2_c0_fruit_g0_t26_lemon_ninmeng.png",
+					"images/maps/v2_c0_fruit_g0_t22_mulberry_sangren.png",
+					"images/maps/v2_c1_vegetable_g0_t30_gherkin_hanhuanggua.png",
+					"images/maps/v2_c1_vegetable_g0_t36_karela_kugua.png",
+					"images/maps/v2_c1_vegetable_g0_t19_carrot_huluobo_huluobu.png",
+					"images/maps/v2_c1_vegetable_g0_t23_radish_shuiluobo_xiaoluobo_shuiluobu_xiaoluobu.png",
+					"images/maps/v2_c1_vegetable_g0_t27_chinese_radish_bailuobo_luobo_bailuobu_luobu.png",
+					"images/maps/v2_c1_vegetable_g0_t20_green_turnip_qingluobo_qingluobu.png"
 				],
 				"refer": [],
 				"priority": 0

@@ -210,6 +210,7 @@ listenContorller.searchImg = function() {
 	} else {
 		var item = inputContorller.search((typeof searchWord) == 'string' ? searchWord : searchWord[0], true);
 	}
+	console.log(JSON.stringify(item))
 	if(item.curItem){
 		if(item.curItem.length == 1 && !item.cur) { 
 			appendHTML(document.getElementById("btn"), baidu.template("editTemp", {
@@ -230,9 +231,10 @@ listenContorller.searchImg = function() {
 			listenContorller.showGallery();
 			if(item.curItem.length == 1){
 				var cr = item.cur;
+				
 				var ci = cr.indexOf(item.curItem[0]);
 				var newCr = [];
-				for(var i = ci ; i < cr.length-ci-1 ; i++){
+				for(var i = ci ; i < cr.length ; i++){
 					newCr.push(cr[i])
 				}
 				listenContorller.showGalleryList({
@@ -241,12 +243,17 @@ listenContorller.searchImg = function() {
 					other:item.other
 				});
 			}else{
-				var cr = item.cur;
-				var ci = cr.indexOf(item.curItem[0]);
+				var ci=[];
 				var newCr = [];
-				for(var i = ci+1 ; i < cr.length-ci-1 ; i++){
-					newCr.push(cr[i])
+				if(item.cur){
+					var cr = item.cur;
+					ci = cr.indexOf(item.curItem[0]);
+					
+					for(var i = ci+1 ; i < cr.length-1 ; i++){
+						newCr.push(cr[i])
+					}
 				}
+				
 				var data1 = item.curItem.concat(newCr)
 				var data = {
 					"curItem":data1,
@@ -326,7 +333,6 @@ document.body.addEventListener("tap", function(e) {
 		if(e.target.className.indexOf('btn') >= 0) {
 			var editDoms = document.querySelectorAll(".pic-container.active");
 			for(var i = 0; i < editDoms.length; i++) {
-				console.log(editDoms[i].className)
 				editDoms[i].classList.remove("active");
 			}
 			listenContorller.btnCtr();
@@ -336,14 +342,15 @@ document.body.addEventListener("tap", function(e) {
 	})
 	/*搜索匹配*/
 inputContorller.search = function(text, bol) {
-	mui.toast("您说的是:" + text + "!")
+	mui.toast("您说的是:" + text)
 	if(/^[\u4e00-\u9fa5]+$/.test(text)) { 
 		text.replace(/。/g, '');
-		console.log(text)
 		text = codefans_net_CC2PY(text).toLowerCase();
 	} else {
 		text = text.toLowerCase();
 	}
+	text = correction(text)
+	console.log("您说的是:" + text)
 	var item = [];
 	var itemUse =[]; 
 	var itemOther = [];
@@ -398,17 +405,23 @@ inputContorller.search = function(text, bol) {
 //			itemLinshi = itemLinshi.splice(itemUseIndex + 1,itemLinshi.length)
 		} 
 	}
+	function correction(text){ 
+		text == "sangren" ? text="sangshen" : text = text;
+		text == "ninmeng" ? text="ningmeng" : text = text;
+		text == "mijie" ? text="miju" : text = text;
+		text == "jinjie" ? text="jinju" : text = text;
+		text == "shancha" ? text="shanzha" : text = text;
+		text == "laoshuzhao" ? text="laoshuzhua" : text = text;
+		text == "xueligong" ? text="xuelihong" : text = text;
+		text == "canghonghua" ? text="zanghonghua" : text = text;
+		return text;
+	}
 	
 	if(!bol && itemUse.length != 0) {
 		getItems();
 		item.push(itemLinshi,itemOther)
 	}
 	gallNum = true;
-//	console.log("------------------------------------------------------------------------------")
-//	console.log("----"+itemUse)
-//	console.log("----"+itemLinshi)
-//	console.log("----"+itemOther)
-//	console.log("------------------------------------------------------------------------------")
 	return {
 		curItem:itemUse,
 		cur:itemLinshi,
@@ -464,7 +477,6 @@ function initTietu(imgUrl) {
 	if(!tagCache) {
 		return;
 	}
-	console.log(tagCache)
 	tagCache = JSON.parse(tagCache);
 	if(tagCache[bgImageKey]) {
 		for(var i = 0; i < tagCache[bgImageKey].length; i++) {
@@ -485,7 +497,6 @@ function initTietu(imgUrl) {
 				curDom.style[PREFIX[j] + "Transform"] = "scale(" + tagCache[bgImageKey][i].scale + ") rotateZ(" + tagCache[bgImageKey][i].angle + "deg) rotateY(" + tagCache[bgImageKey][i].flip + "deg)";
 				var curEditBtns = curDom.querySelectorAll(".edit-btn");
 				for(var m = 0; m < curEditBtns.length; m++) {
-					//					console.log("-----"+tagCache[bgImageKey][i]._scale)
 					curEditBtns[m].style[PREFIX[j] + "Transform"] = "scale(" + tagCache[bgImageKey][i]._scale + ")";
 				}
 			}
