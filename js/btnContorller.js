@@ -351,7 +351,8 @@ inputContorller.search = function(text, bol) {
 		text = text.toLowerCase();
 	}
 	text = correction(text)
-	mui.toast("您说的是:" +text1 + text);
+	mui.toast("您说的是:" + text1 + " " + text)
+	console.log("您说的是:" + text)
 	var item = [];
 	var itemUse =[]; 
 	var itemOther = [];
