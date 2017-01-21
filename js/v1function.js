@@ -165,7 +165,6 @@ function reset() {
 			location.reload();
 			var d = data[0];
 			var _id = d[0].replace(/\d+/g,'');
-			if(d){initTietu(_id)}
 		}, 300);
 	}, "", ["好的！"]);
 	return;
@@ -175,7 +174,6 @@ function clearLocal(){
 	setC('score', 101);
 	setC('databases', []);
 }
-
 
 //播放单词
 function playWord(callback) {

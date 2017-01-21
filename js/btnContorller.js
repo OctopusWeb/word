@@ -350,7 +350,7 @@ inputContorller.search = function(text, bol) {
 	} else {
 		text = text.toLowerCase();
 	}
-	text = correction(text)
+	text = correction(text,text1);
 	mui.toast("您说的是:" + text1 + " " + text)
 	console.log("您说的是:" + text)
 	var item = [];
@@ -407,12 +407,12 @@ inputContorller.search = function(text, bol) {
 //			itemLinshi = itemLinshi.splice(itemUseIndex + 1,itemLinshi.length)
 		} 
 	}
-	function correction(text){ 
+	function correction(text,text1){ 
 		text == "sangren" ? text="sangshen" : text = text;
 		text == "ninmeng" ? text="ningmeng" : text = text;
 		text == "mijie" ? text="miju" : text = text;
 		text == "jinjie" ? text="jinju" : text = text;
-		text == "shancha" ? text="shanzha" : text = text;
+		text == "shancha" && text1 == "山楂"? text="shanzha" : text = text;
 		text == "laoshuzhao" ? text="laoshuzhua" : text = text;
 		text == "xueligong" ? text="xuelihong" : text = text;
 		text == "canghonghua" ? text="zanghonghua" : text = text;
